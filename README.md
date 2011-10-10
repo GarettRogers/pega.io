@@ -29,7 +29,7 @@ Just use a simple HTTP POST to push any message you like to your users.
 ### Python (App Engine)
 	form_fields = {
 		"channel":"channel-to-broadcast-to",
-		"secretkey":"mysecretkeysothatnobodyelsecansendmessageswithoutmypermission",
+		"secretkey":"mysecretkey",
 		"property1":"Some Text",
 		"property2":"Some More Text
 	}
@@ -45,7 +45,7 @@ Just use a simple HTTP POST to push any message you like to your users.
 	$url = 'http://www.yourpushserver.com/send';
 	$fields = array(
 		'channel'=>urlencode("channel-to-broadcast-to"),
-		'secretkey'=>urlencode("mysecretkeysothatnobodyelsecansendmessageswithoutmypermission"),
+		'secretkey'=>urlencode("mysecretkey"),
 		'property1'=>urlencode("Some Text"),
 		'property2'=>urlencode("Some More Text")
 		);
@@ -64,7 +64,7 @@ Just use a simple HTTP POST to push any message you like to your users.
 	curl_close($ch);
 
 ### CURL
-	curl -d http://www.yourpushserver.com/send "channel=channel-to-broadcast-to&secretkey=mysecretkeysothatnobodyelsecansendmessageswithoutmypermission&property1=Some+Text&property2=Some+More+Text"
+	curl -d http://www.yourpushserver.com/send "channel=channel-to-broadcast-to&secretkey=mysecretkey&property1=Some+Text&property2=Some+More+Text"
 
 ## Example: Implement a listener
 
