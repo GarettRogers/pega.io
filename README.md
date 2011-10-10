@@ -29,6 +29,7 @@ Just use a simple HTTP POST to push any message you like to your users.
 ### Python (App Engine)
 	form_fields = {
 		"channel":"channel-to-broadcast-to",
+		"secretkey":"mysecretkeysothatnobodyelsecansendmessageswithoutmypermission",
 		"property1":"Some Text",
 		"property2":"Some More Text
 	}
@@ -44,6 +45,7 @@ Just use a simple HTTP POST to push any message you like to your users.
 	$url = 'http://www.yourpushserver.com/send';
 	$fields = array(
 		'channel'=>urlencode("channel-to-broadcast-to"),
+		'secretkey'=>urlencode("mysecretkeysothatnobodyelsecansendmessageswithoutmypermission"),
 		'property1'=>urlencode("Some Text"),
 		'property2'=>urlencode("Some More Text")
 		);
@@ -61,26 +63,23 @@ Just use a simple HTTP POST to push any message you like to your users.
 	//close connection
 	curl_close($ch);
 
-### Javascript (jQuery)
-	$.ajax({
-		type: "POST",
-		url: "http://www.yourpushserver.com/send",
-		data: "channel=channel-to-broadcast-to&property1=Some+Text&property2=Some+More+Text"
-	});
-
 ### CURL
-	curl -d http://www.yourpushserver.com/send "channel=channel-to-broadcast-to&property1=Some+Text&property2=Some+More+Text"
+	curl -d http://www.yourpushserver.com/send "channel=channel-to-broadcast-to&secretkey=mysecretkeysothatnobodyelsecansendmessageswithoutmypermission&property1=Some+Text&property2=Some+More+Text"
 
 ## Example: Implement a listener
 
 In your HTML, or in a separate .js file, simply connect to your pub-sub server, and subscribe to whichever channels you want to listen to.
+```html
+	<script src="http://ec2-107-20-101-190.compute-1.amazonaws.com/socket.io/socket.io.js"></script>
 
-```js
-	var socket = io.connect('http://www.yourpushserver.com/');
+```html
+	<script>
+		var socket = io.connect('http://www.yourpushserver.com/');
   	
-	socket.on('connect', function () {
-		socket.on('channel-to-broadcast-to', function (obj) {
-			console.log(obj.property1 + obj.property2 + obj.channel);
+		socket.on('connect', function () {
+			socket.on('channel-to-broadcast-to', function (obj) {
+				console.log(obj.property1 + obj.property2 + obj.channel);
+			});
 		});
-	});
+	</script>
 ```
