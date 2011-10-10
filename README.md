@@ -23,18 +23,6 @@ To edit the config file (to set up more advanced stuff):
 
 Refer to the wiki to learn how to configure your easy-pub-sub for a load balanced environment (and how to easily scale up from a single pub sub server).
 
-## Example: Implement a listener
-
-```js
-	var socket = io.connect('http://www.yourpushserver.com/');
-  	
-	socket.on('connect', function () {
-		socket.on('channel-to-broadcast-to', function (obj) {
-			console.log(obj.property1 + obj.property2 + obj.channel);
-		});
-	});
-```
-
 ## Examples: Push from any back-end
 
 Just use a simple HTTP POST to push any message you like to your users.
@@ -83,3 +71,17 @@ Just use a simple HTTP POST to push any message you like to your users.
 
 ### CURL
 	curl -d http://www.yourpushserver.com/send "channel=channel-to-broadcast-to&property1=Some+Text&property2=Some+More+Text"
+
+## Example: Implement a listener
+
+In your HTML, or in a separate .js file, simply connect to your pub-sub server, and subscribe to whichever channels you want to listen to.
+
+```js
+	var socket = io.connect('http://www.yourpushserver.com/');
+  	
+	socket.on('connect', function () {
+		socket.on('channel-to-broadcast-to', function (obj) {
+			console.log(obj.property1 + obj.property2 + obj.channel);
+		});
+	});
+```
