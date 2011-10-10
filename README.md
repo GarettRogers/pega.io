@@ -10,16 +10,17 @@ You have decided to build a third website that shows all of this activity to hun
 
 ## How to Install and Run
 
-	npm install easy-pub-sub socket.io express redis
-	easy-pub-sub start
+	> npm install easy-pub-sub socket.io express redis
+	> easy-pub-sub start
 
 ## How to Configure
 
 For a simple pub sub server, no configuration required!
 
-To edit the config file (to set up more advanced stuff):
-	vi /etc/easy-pub-sub.config
-	easy-pub-sub restart
+To edit the config file (to set up more advanced stuff)
+
+	> vi /etc/easy-pub-sub.config
+	> easy-pub-sub restart
 
 Refer to the wiki to learn how to configure your easy-pub-sub for a load balanced environment (and how to easily scale up from a single pub sub server).
 
