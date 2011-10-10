@@ -69,10 +69,9 @@ Just use a simple HTTP POST to push any message you like to your users.
 ## Example: Implement a listener
 
 In your HTML, or in a separate .js file, simply connect to your pub-sub server, and subscribe to whichever channels you want to listen to.
-```html
-	<script src="http://ec2-107-20-101-190.compute-1.amazonaws.com/socket.io/socket.io.js"></script>
 
 ```html
+	<script src="http://www.yourpushserver.com/socket.io/socket.io.js"></script>
 	<script>
 		var socket = io.connect('http://www.yourpushserver.com/');
   	
