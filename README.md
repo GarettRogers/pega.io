@@ -10,7 +10,7 @@ You have decided to build a third website that shows all of this real-time activ
 
 ## How to Install
 
-    npm install easy-pub-sub socket.io express redis
+	npm install easy-pub-sub socket.io express redis
 
 ## How to Configure
 
@@ -20,14 +20,13 @@ For a highly scalable solution, refer to the wiki to learn how to install/manage
 
 ## How to push from a back-end
 
-```python (App Engine)
-    form_fields = {
-                    "channel":"channel-to-broadcast-to",
-                    "property1":"Some Text",
-                    "property2":"Some More Text
-                  }
-    form_data = urllib.urlencode(form_fields)
+### Python
+	form_fields = {
+		"channel":"channel-to-broadcast-to",
+		"property1":"Some Text",
+		"property2":"Some More Text
+	}
+	form_data = urllib.urlencode(form_fields)
 
-    urlfetch.make_fetch_call(rpc=urlfetch.create_rpc(), url="http://www.yourpushserver.com/send", payload=form_data, method=urlfetch.POST, headers={'Content-Type': 'application/x-www-form-urlencoded'})
+	urlfetch.make_fetch_call(rpc=urlfetch.create_rpc(), url="http://www.yourpushserver.com/send", payload=form_data, method=urlfetch.POST, headers={'Content-Type': 'application/x-www-form-urlencoded'})
 
-```
