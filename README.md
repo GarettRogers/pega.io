@@ -4,29 +4,34 @@ Dead simple pub-sub using node.js.  Extremely easy to get started, scale, and us
 
 easy-pub-sub is a Socket.IO/Node.JS project that makes implementing a scalable and reliable pub/sub application hassle free.  Your back-end doesn't need to be written in Node.JS to take advantage of this.
 
-For example:  Imagine you have a server running a Python application using Tweepy to listen for real-time tweets about foosball, and you've also got a website written in PHP where people are posting comments on your foosball website.
+For example:  Imagine you have a server running a Python application using Tweepy to listen for real-time tweets about foosball, and you've also got a website written in PHP where people are posting comments on your foosball blog posts.
 
-You have decided to build a third website that shows all of this real-time activity to hundreds of thousands of interested people.  How in the world are you going to do this?  easy-pub-sub.
+You have decided to build a third website that shows all of this activity to hundreds of thousands of interested people in real-time.  Where in the world do you start?  easy-pub-sub.
 
-## How to Install
+## How to Install and Run
 
 	npm install easy-pub-sub socket.io express redis
+	easy-pub-sub start
 
 ## How to Configure
 
 For a simple pub sub server, no configuration required!
 
-For a highly scalable solution, refer to the wiki to learn how to install/manage your servers (and how to scale up from a single pub sub server).
+To edit the config file (to set up more advanced stuff):
+	vi /etc/easy-pub-sub.config
+	easy-pub-sub restart
+
+Refer to the wiki to learn how to configure your easy-pub-sub for a load balanced environment (and how to easily scale up from a single pub sub server).
 
 ## Example: Implement a listener
 
 ```js
 	var socket = io.connect('http://www.yourpushserver.com/');
   	
-  	socket.on('connect', function () {
-		socket.on('channel-to-broadcast-to', function (msg) {
-      			console.log(msg);
-    		});
+	socket.on('connect', function () {
+		socket.on('channel-to-broadcast-to', function (obj) {
+			console.log(obj.property1 + obj.property2 + obj.channel);
+		});
 	});
 ```
 
