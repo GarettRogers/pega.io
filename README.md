@@ -1,5 +1,3 @@
-Dead simple pub-sub using node.js.  Extremely easy to get started, scale, and use.  It hooks into any back-end you have, and works on any browser your visitors are using.  That means you don't have to worry about refactoring your existing codebase to take advantage of pub-sub push using web sockets.
-
 # easy-pub-sub
 
 easy-pub-sub is a Socket.IO/Node.JS project that makes implementing a scalable and reliable pub/sub application hassle free.  Your back-end doesn't need to be written in Node.JS to take advantage of this.
