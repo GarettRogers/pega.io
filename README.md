@@ -6,19 +6,19 @@ For example:  Imagine you have a server running a Python application using Tweep
 
 You have decided to build a third website that shows all of this activity to hundreds of thousands of interested people in real-time.  Where in the world do you start?  easy-pub-sub.
 
-## How to Install and Run
+## How to Install and Run on Linux
 
-	> npm install easy-pub-sub socket.io express redis
-	> easy-pub-sub start
+	curl http://aimx.com/easy-pub-sub/install.sh | sh
+	easy-pub-sub start
 
 ## How to Configure
 
 For a simple pub sub server, no configuration required!
 
-To edit the config file (to set up more advanced stuff)
+To edit the config file  (to set up more advanced stuff)
 
-	> vi /etc/easy-pub-sub.config
-	> easy-pub-sub restart
+	vi /etc/easy-pub-sub.config
+	easy-pub-sub restart
 
 Refer to the wiki to learn how to configure your easy-pub-sub for a load balanced environment (and how to easily scale up from a single pub sub server).
 
