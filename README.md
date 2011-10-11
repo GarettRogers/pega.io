@@ -8,7 +8,7 @@ You have decided to build a third website that shows all of this activity to hun
 
 ## How to Install and Run on Linux
 
-	curl http://aimx.com/easy-pub-sub/install.sh | sh
+	curl http://www.aimx.com/push/install.sh | sh
 	easy-pub-sub start
 
 ## How to Configure
