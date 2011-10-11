@@ -6,9 +6,19 @@ For example:  Imagine you have a server running a Python application using Tweep
 
 You have decided to build a third website that shows all of this activity to hundreds of thousands of interested people in real-time.  Where in the world do you start?  Pega.
 
-## How to Install and Run on Linux
+## Easy Install and Run on Linux
 
 	curl http://www.aimx.com/pega/install.sh | sh
+	pega start
+
+## Install from source
+	
+	npm install socket.io express redis
+	git clone http://github.com/Gootch/Pega.git
+	cd Pega
+	./configure
+	make
+	make install
 	pega start
 
 ## How to Configure
