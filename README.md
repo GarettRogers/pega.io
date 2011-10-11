@@ -78,7 +78,7 @@ Just use a simple HTTP POST to push any message you like to your users.
 In your HTML, or in a separate .js file, simply connect to your Pega server, and subscribe to whichever channels you want to listen to.
 
 ```html
-	<script src="http://www.yourpegaserver.com/socket.io/socket.io.js"></script>
+	<script src="http://www.yourpegaserver.com/pega.js"></script>
 	<script>
 		var socket = io.connect('http://www.yourpegaserver.com/');
   	
@@ -102,7 +102,7 @@ Skip all the installation and configuration by using our servers.  Sign up for t
 
 ### Example: Implement a client listener
 ```html
-	<script src="http://pega.aimx.com/socket.io/socket.io.js"></script>
+	<script src="http://pega.aimx.com/pega.js"></script>
 	<script>
 		var socket = io.connect('http://pega.aimx.com/');
   	
