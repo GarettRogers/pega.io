@@ -66,7 +66,7 @@ Just use a simple HTTP POST to push any message you like to your users.
 ### CURL
 	curl -d http://www.yourpushserver.com/send "channel=channel-to-broadcast-to&secretkey=mysecretkey&property1=Some+Text&property2=Some+More+Text"
 
-## Example: Implement a listener
+## Example: Implement a client  listener
 
 In your HTML, or in a separate .js file, simply connect to your pub-sub server, and subscribe to whichever channels you want to listen to.
 
@@ -78,6 +78,33 @@ In your HTML, or in a separate .js file, simply connect to your pub-sub server, 
 		socket.on('connect', function () {
 			socket.on('channel-to-broadcast-to', function (obj) {
 				console.log(obj.property1 + obj.property2 + obj.channel);
+			});
+			socket.on('another-channel', function (obj) {
+				console.log(obj);
+			});
+		});
+	</script>
+```
+## Don't have a server, or don't want to worry about maintaining one?  No problem!
+
+Skip all the installation and configuration by using our servers.  Sign up for the service at www.aimx.com/push to receive a secret and client key.  
+
+### Example: Pushing from your back-end
+	#### CURL
+		curl -d http://push.aimx.com/send "channel=channel-to-broadcast-to&secretkey=mysecretkey&property1=Some+Text&property2=Some+More+Text"
+
+### Example: Implement a client listener
+```html
+	<script src="http://push.aimx.com/socket.io/socket.io.js"></script>
+	<script>
+		var socket = io.connect('http://push.aimx.com/');
+  	
+		socket.on('connect', function () {
+			socket.on('channel-to-broadcast-to/clientkey', function (obj) {
+				console.log(obj.property1 + obj.property2 + obj.channel);
+			});
+			socket.on('another-channel/clientkey', function (obj) {
+				console.log(obj);
 			});
 		});
 	</script>
