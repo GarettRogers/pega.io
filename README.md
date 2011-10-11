@@ -13,12 +13,9 @@ You have decided to build a third website that shows all of this activity to hun
 
 ## Install from source
 	
-	npm install socket.io express redis
-	git clone http://github.com/Gootch/Pega.git
+	git clone git://github.com/Gootch/Pega.git
 	cd Pega
-	./configure
-	make
-	make install
+	./configure && make && make install
 	pega start
 
 ## How to Configure
