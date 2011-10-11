@@ -1,33 +1,33 @@
-# PegaIO
+# Pega.IO
 
-PegaIO is a Socket.IO/Node.JS project that makes implementing a scalable and reliable pub/sub application hassle free.  Your back-end doesn't need to be written in Node.JS to take advantage of this.
+Pega.IO is a Socket.IO/Node.JS project that makes implementing a scalable and reliable pub/sub application hassle free.  Your back-end doesn't need to be written in Node.JS to take advantage of this.
 
 For example:  Imagine you have a server running a Python application using Tweepy to listen for real-time tweets about foosball, and you've also got a website written in PHP where people are posting comments on your foosball blog posts.
 
-You have decided to build a third website that shows all of this activity to hundreds of thousands of interested people in real-time.  Where in the world do you start?  PegaIO.
+You have decided to build a third website that shows all of this activity to hundreds of thousands of interested people in real-time.  Where in the world do you start?  Pega.IO.
 
 ## Easy Install and Run on Linux
 
-	curl http://www.aimx.com/pegaio/install.sh | sh
-	pegaio start
+	curl http://www.aimx.com/pega.io/install.sh | sh
+	pega-io start
 
 ## Install from source
 	
-	git clone git://github.com/Gootch/pegaio.git
-	cd pegaio
+	git clone git://github.com/Gootch/pega.io.git
+	cd pega.io
 	./configure && make && make install
-	pegaio start
+	pega-io start
 
 ## How to Configure
 
-For a simple PegaIO server, no configuration required!
+For a simple Pega.IO server, no configuration required!
 
 To edit the config file  (to set up more advanced stuff)
 
-	vi /etc/pegaio.config
-	pegaio restart
+	vi /etc/pega.io.config
+	pega-io restart
 
-Refer to the wiki to learn how to configure your PegaIO for a load balanced environment (and how to easily scale up from a single PegaIO server).
+Refer to the wiki to learn how to configure your Pega.IO for a load balanced environment (and how to easily scale up from a single Pega.IO server).
 
 ## Examples: Push from any back-end
 
@@ -43,13 +43,13 @@ Just use a simple HTTP POST to push any message you like to your users.
 	form_data = urllib.urlencode(form_fields)
 
 	urlfetch.make_fetch_call(rpc=urlfetch.create_rpc(), 
-		url="http://www.yourpegaioserver.com/send", 
+		url="http://www.your-pega-io-server.com/send", 
 		payload=form_data, 
 		method=urlfetch.POST, 
 		headers={'Content-Type': 'application/x-www-form-urlencoded'})
 
 ### PHP
-	$url = 'http://www.yourpegaioserver.com/send';
+	$url = 'http://www.your-pega-io-server.com/send';
 	$fields = array(
 		'channel'=>urlencode("channel-to-broadcast-to"),
 		'secretkey'=>urlencode("mysecretkey"),
@@ -71,16 +71,16 @@ Just use a simple HTTP POST to push any message you like to your users.
 	curl_close($ch);
 
 ### CURL
-	curl -d http://www.yourpegaioserver.com/send "channel=channel-to-broadcast-to&secretkey=mysecretkey&property1=Some+Text&property2=Some+More+Text"
+	curl -d http://www.your-pega-io-server.com/send "channel=channel-to-broadcast-to&secretkey=mysecretkey&property1=Some+Text&property2=Some+More+Text"
 
 ## Example: Implement a client  listener
 
-In your HTML, or in a separate .js file, simply connect to your PegaIO server, and subscribe to whichever channels you want to listen to.
+In your HTML, or in a separate .js file, simply connect to your Pega.IO server, and subscribe to whichever channels you want to listen to.
 
 ```html
-	<script src="http://www.yourpegaioserver.com/pegaio.js"></script>
+	<script src="http://www.your-pega-io-server.com/pega.io.js"></script>
 	<script>
-		var socket = pegaio.connect('http://www.yourpegaioserver.com/');
+		var socket = io.connect('http://www.your-pega-io-server.com/');
   	
 		socket.on('connect', function () {
 			socket.on('channel-to-broadcast-to', function (obj) {
@@ -102,9 +102,9 @@ Skip all the installation and configuration by using our servers.  Sign up for t
 
 ### Example: Implement a client listener
 ```html
-	<script src="http://pegaio.aimx.com/pegaio.js"></script>
+	<script src="http://pegaio.aimx.com/pega.io.js"></script>
 	<script>
-		var socket = pegaio.connect('http://pegaio.aimx.com/');
+		var socket = io.connect('http://pegaio.aimx.com/');
   	
 		socket.on('connect', function () {
 			socket.on('channel-to-broadcast-to/clientkey', function (obj) {
