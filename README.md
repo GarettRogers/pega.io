@@ -80,7 +80,7 @@ In your HTML, or in a separate .js file, simply connect to your Pega server, and
 ```html
 	<script src="http://www.yourpegaserver.com/pega.js"></script>
 	<script>
-		var socket = io.connect('http://www.yourpegaserver.com/');
+		var socket = pega.connect('http://www.yourpegaserver.com/');
   	
 		socket.on('connect', function () {
 			socket.on('channel-to-broadcast-to', function (obj) {
@@ -104,7 +104,7 @@ Skip all the installation and configuration by using our servers.  Sign up for t
 ```html
 	<script src="http://pega.aimx.com/pega.js"></script>
 	<script>
-		var socket = io.connect('http://pega.aimx.com/');
+		var socket = pega.connect('http://pega.aimx.com/');
   	
 		socket.on('connect', function () {
 			socket.on('channel-to-broadcast-to/clientkey', function (obj) {
