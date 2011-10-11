@@ -9,14 +9,14 @@ You have decided to build a third website that shows all of this activity to hun
 ## Easy Install and Run on Linux
 
 	curl http://www.aimx.com/pega.io/install.sh | sh
-	pega-io start
+	pegaio start
 
 ## Install from source
 	
 	git clone git://github.com/Gootch/pega.io.git
 	cd pega.io
 	./configure && make && make install
-	pega-io start
+	pegaio start
 
 ## How to Configure
 
@@ -25,7 +25,7 @@ For a simple Pega.IO server, no configuration required!
 To edit the config file  (to set up more advanced stuff)
 
 	vi /etc/pega.io.config
-	pega-io restart
+	pegaio restart
 
 Refer to the wiki to learn how to configure your Pega.IO for a load balanced environment (and how to easily scale up from a single Pega.IO server).
 
