@@ -8,26 +8,23 @@ You have decided to build a third website that shows all of this activity to hun
 
 ## Easy Install and Run on Linux
 
-	curl http://www.aimx.com/pega.io/install.sh | sh
-	pegaio start
+	curl http://cloud.github.com/downloads/Gootch/pega.io/install.sh | sh
 
-## Install from source
+## Install Manually
+### Dependencies
+
+You must first install Node, NPM and Redis.
+
+### Pega.IO
 	
 	git clone git://github.com/Gootch/pega.io.git
 	cd pega.io
-	./configure && make && make install
-	pegaio start
+	npm install .
+	node app.js
 
 ## How to Configure
 
 For a simple Pega.IO server, no configuration required!
-
-To edit the config file  (to set up more advanced stuff)
-
-	vi /etc/pega.io.config
-	pegaio restart
-
-Refer to the wiki to learn how to configure your Pega.IO for a load balanced environment (and how to easily scale up from a single Pega.IO server).
 
 ## Examples: Push from any back-end
 
@@ -78,7 +75,7 @@ Just use a simple HTTP POST to push any message you like to your users.
 In your HTML, or in a separate .js file, simply connect to your Pega.IO server, and subscribe to whichever channels you want to listen to.
 
 ```html
-	<script src="http://www.your-pega-io-server.com/pega.io.js"></script>
+	<script src="http://www.your-pega-io-server.com/socket.io/socket.io.js"></script>
 	<script>
 		var socket = io.connect('http://www.your-pega-io-server.com/');
   	
@@ -91,28 +88,3 @@ In your HTML, or in a separate .js file, simply connect to your Pega.IO server, 
 			});
 		});
 	</script>
-```
-## Don't have a server, or don't want to worry about maintaining one?  No problem!
-
-Skip all the installation and configuration by using our servers.  Sign up for the service at www.aimx.com/pegaio to receive a secret and client key.  
-
-### Example: Pushing from your back-end
-	#### CURL
-		curl -d http://pegaio.aimx.com/send "channel=channel-to-broadcast-to&secretkey=mysecretkey&property1=Some+Text&property2=Some+More+Text"
-
-### Example: Implement a client listener
-```html
-	<script src="http://pegaio.aimx.com/pega.io.js"></script>
-	<script>
-		var socket = io.connect('http://pegaio.aimx.com/');
-  	
-		socket.on('connect', function () {
-			socket.on('channel-to-broadcast-to/clientkey', function (obj) {
-				console.log(obj.property1 + obj.property2 + obj.channel);
-			});
-			socket.on('another-channel/clientkey', function (obj) {
-				console.log(obj);
-			});
-		});
-	</script>
-```

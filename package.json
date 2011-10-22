@@ -1,0 +1,16 @@
+{
+  "author": "Garett Rogers <garett@aimx.com> (http://www.aimx.com)",
+  "name": "Pega.IO",
+  "description": "A simple pub/sub server running on node / socket.io.  Pega.IO lets you use any back-end that is capable of doing HTTP POST to publish.",
+  "version": "0.0.1",
+  "homepage": "http://github.com/Gootch/pega.io",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Gootch/pega.io.git"
+  },
+  "engines": {
+    "node": "~0.4.12"
+  },
+  "dependencies": { "socket.io":"0.8.5", "express":"2.4.7", "redis":"0.6.7"},
+  "devDependencies": {}
+}
