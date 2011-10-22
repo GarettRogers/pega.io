@@ -37,35 +37,12 @@ sub.on("pmessage", function(pattern, channel, json) { io.sockets.volatile.emit(c
 sub.psubscribe('*');
 
 app = express.createServer(express.static(__dirname + '/public'),express.bodyParser());
-//app = express.createServer(express.bodyParser());
 app.listen(_listenport, _listenaddr);
-app.get("/install.sh", function(req, res){
-        fs.readFile(__dirname + "/public/install.sh", "binary", function(err, file) {
-
-         // File could not be read, return a 500 error.
-         if (err) {
-            res.writeHead(500, {"Content-Type": "text/plain"});
-            res.write(err+"\n");
-            res.end();
-            return;
-         }
-
-         // File was found, and successfully read from the file system.
-         // Return a 200 header and the file as binary data.
-        res.writeHead(200, {"Content-Length":String(file.length),"Accept-Ranges":"bytes","Content-Type": "text/plain"});
-         res.write(file, "binary");
-
-         // End the response.
-         res.end();
-      });
-  //res.sendfile(__dirname + "/public/install.sh");
-});
 app.post(_postpath, function(req, res){
   if(req.body.secretkey==_secretkey){
     delete req.body.secretkey; pub.publish(req.body.channel, JSON.stringify(req.body))
   }
 });
-
 
 io = socketio.listen(app);
 io.configure(function () { io.set('log level', _loglevel) });
