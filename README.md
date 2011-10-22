@@ -68,7 +68,7 @@ Just use a simple HTTP POST to push any message you like to your users.
 	curl_close($ch);
 
 ### CURL
-	curl -d http://www.your-pega-io-server.com:8888/send "channel=channel-to-broadcast-to&secretkey=mysecretkey&property1=Some+Text&property2=Some+More+Text"
+	curl -d "channel=channel-to-broadcast-to&secretkey=mysecretkey&property1=Some+Text&property2=Some+More+Text" http://www.your-pega-io-server.com:8888/send
 
 ## Example: Implement a client  listener
 
