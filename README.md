@@ -40,13 +40,13 @@ Just use a simple HTTP POST to push any message you like to your users.
 	form_data = urllib.urlencode(form_fields)
 
 	urlfetch.make_fetch_call(rpc=urlfetch.create_rpc(), 
-		url="http://www.your-pega-io-server.com/send", 
+		url="http://www.your-pega-io-server.com:8888/send", 
 		payload=form_data, 
 		method=urlfetch.POST, 
 		headers={'Content-Type': 'application/x-www-form-urlencoded'})
 
 ### PHP
-	$url = 'http://www.your-pega-io-server.com/send';
+	$url = 'http://www.your-pega-io-server.com:8888/send';
 	$fields = array(
 		'channel'=>urlencode("channel-to-broadcast-to"),
 		'secretkey'=>urlencode("mysecretkey"),
@@ -68,16 +68,16 @@ Just use a simple HTTP POST to push any message you like to your users.
 	curl_close($ch);
 
 ### CURL
-	curl -d http://www.your-pega-io-server.com/send "channel=channel-to-broadcast-to&secretkey=mysecretkey&property1=Some+Text&property2=Some+More+Text"
+	curl -d http://www.your-pega-io-server.com:8888/send "channel=channel-to-broadcast-to&secretkey=mysecretkey&property1=Some+Text&property2=Some+More+Text"
 
 ## Example: Implement a client  listener
 
 In your HTML, or in a separate .js file, simply connect to your Pega.IO server, and subscribe to whichever channels you want to listen to.
 
 ```html
-	<script src="http://www.your-pega-io-server.com/socket.io/socket.io.js"></script>
+	<script src="http://www.your-pega-io-server.com:8888/socket.io/socket.io.js"></script>
 	<script>
-		var socket = io.connect('http://www.your-pega-io-server.com/');
+		var socket = io.connect('http://www.your-pega-io-server.com:8888/');
   	
 		socket.on('connect', function () {
 			socket.on('channel-to-broadcast-to', function (obj) {
