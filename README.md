@@ -13,8 +13,7 @@ You have decided to build a third website that shows all of this activity to hun
 - Make sure port 8888 is open to TCP traffic on your firewall
 - If you choose to use port 80 (set in app.js), you must run with sudo
 
-	killall node
-	sudo ~/local/bin/pegaio start
+	killall node && sudo ~/local/bin/pegaio start
 
 ## Install Manually
 ### Dev Tools (Ubuntu, Debian)
