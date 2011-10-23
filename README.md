@@ -11,12 +11,12 @@ You have decided to build a third website that shows all of this activity to hun
 
 ### Common pitfalls:
 - Make sure port 8888 is open to TCP traffic on your firewall
-- Some corporate firewalls block access to 8888, so you may want to use port 80 (set in app.'s)
+- Some corporate firewalls block access to 8888, so you may want to use port 80 (set in app.js)
 - If you choose to use port 80, you must run with sudo
 
 	killall node && sudo ~/local/bin/pegaio start
 
-## Install Manually
+## Manual Install
 ### Dev Tools (Ubuntu, Debian)
 	sudo apt-get -y update
 	sudo apt-get -y install libssl-dev git-core pkg-config build-essential curl gcc g++
