@@ -6,17 +6,55 @@ For example:  Imagine you have a server running a Python application using Tweep
 
 You have decided to build a third website that shows all of this activity to hundreds of thousands of interested people in real-time.  Where in the world do you start?  Pega.IO.
 
-## Easy Install and Run on Linux
-
+## Easy Install and Run on Linux (Ubuntu)
 	curl http://cloud.github.com/downloads/Gootch/pega.io/install.sh | sh
 
 ## Install Manually
-### Dependencies
+### Dev Tools (Ubuntu, Debian)
+	sudo apt-get -y update
+	sudo apt-get -y install libssl-dev git-core pkg-config build-essential curl gcc g++
 
-You must first install Node, NPM and Redis.
+### Dev Tools (Red Hat, CentOS)
+	sudo yum update
+	sudo yum install openssl-devel git-core pkgconfig curl gcc gcc-c++ kernel-devel
+	
+### Node
+	mkdir ~/node-install
+	cd ~/node-install
+	wget http://nodejs.org/dist/node-v0.4.12.tar.gz
+	tar -zxf node-v0.4.12.tar.gz
+	cd node-v0.4.12
+	sudo ./configure 
+	sudo make
+	sudo make install
+	
+### NPM
+	curl http://npmjs.org/install.sh | sudo sh
+
+### Redis
+	cd ~
+	mkdir redis && cd redis
+	wget http://redis.googlecode.com/files/redis-2.4.1.tar.gz
+	tar -zxf redis-2.4.1.tar.gz
+	cd redis-2.4.1
+	sudo make
+	sudo make install
+	wget https://github.com/ijonas/dotfiles/raw/master/etc/init.d/redis-server
+	sudo rm -f redis.conf
+	wget http://cloud.github.com/downloads/Gootch/pega.io/redis.conf
+	sudo mv redis-server /etc/init.d/redis-server
+	sudo chmod +x /etc/init.d/redis-server
+	sudo mv redis.conf /etc/redis.conf
+	sudo useradd redis
+	sudo mkdir -p /var/lib/redis
+	sudo mkdir -p /var/log/redis
+	sudo chown redis.redis /var/lib/redis
+	sudo chown redis.redis /var/log/redis
+	sudo update-rc.d redis-server defaults
+	sudo service reeds start
 
 ### Pega.IO
-	
+	cd ~
 	git clone git://github.com/Gootch/pega.io.git
 	cd pega.io
 	npm install .
@@ -24,7 +62,7 @@ You must first install Node, NPM and Redis.
 
 ## How to Configure
 
-For a simple Pega.IO server, no configuration required!
+For a simple Pega.IO server, no configuration required!  For advanced configuration, see app.js
 
 ## Examples: Push from any back-end
 
