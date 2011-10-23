@@ -11,7 +11,8 @@ You have decided to build a third website that shows all of this activity to hun
 
 ### Common pitfalls:
 - Make sure port 8888 is open to TCP traffic on your firewall
-- If you choose to use port 80 (set in app.js), you must run with sudo
+- Some corporate firewalls block access to 8888, so you may want to use port 80 (set in app.'s)
+- If you choose to use port 80, you must run with sudo
 
 	killall node && sudo ~/local/bin/pegaio start
 
